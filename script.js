@@ -29,56 +29,18 @@ function getHumanChoice() {
     }
 }
 
-// Returns the possible outcomes when human choice is rock
-function humanChoiceIsRock(computerChoice) {
-    switch (computerChoice) {
-        case "rock":
-            return "It's a tie!";
-        case "paper":
-            computerScore++;
-            return "You lose! Paper beats Rock."
-        default:
-            humanScore++;
-            return "You win! Rock beats Scissors."
-    }
-}
-
-// Returns possible outcomes when human choice is paper
-function humanChoiceIsPaper(computerChoice) {
-    switch (computerChoice) {
-        case "rock":
-            humanScore++;
-            return "You win! Paper beats Rock."
-        case "paper":
-            return "It's a tie!";
-        default:
-            computerScore++;
-            return "You lose! Scissors beats Paper";
-    }
-}
-
-// Returns possible outcomes when human choice is scissors
-function humanChoiceIsScissors(computerChoice) {
-    switch (computerChoice) {
-        case "rock":
-            computerScore++;
-            return "You lose! Rock beats Scissors."
-        case "paper":
-            humanScore++;
-            return "You win! Scissors beats Paper.";
-        default:
-            return "It's a tie!";
-    }
-}
-
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice === "rock") {
-        console.log(humanChoiceIsRock(computerChoice));
-    } else if (humanChoice === "paper") {
-        console.log(humanChoiceIsPaper(computerChoice));
-    } else {
-        console.log(humanChoiceIsScissors(computerChoice));
-    }
+   if (humanChoice === computerChoice) {
+    console.log("It's a tie!");
+   } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    console.log("You win! Rock beats Scissors");
+   } else if (humanChoice === "paper" && computerChoice === "rock") {
+    console.log("You win! Paper beats Rock");
+   } else if (humanChoice === "scissors" && computerChoice === "paper") {
+    console.log("You win! Scissors beats Paper");
+   } else {
+    console.log(`You lose! ${computerChoice.toUpperCase()} beats ${humanChoice.toUpperCase()}`);
+   }
 }
 
 // Plays five rounds
