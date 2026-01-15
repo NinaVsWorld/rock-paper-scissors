@@ -44,7 +44,7 @@ function playRound(humanChoice, computerChoice) {
 }
 
 // Plays five rounds
-function playGame() {
+/*function playGame() {
     for (let i = 0; i < 5; i++) {
         playRound(getHumanChoice(), getComputerChoice());
     }
@@ -58,4 +58,4 @@ function playGame() {
     }
 }
 
-playGame();
+playGame();*/
