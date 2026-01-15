@@ -4,36 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="title">Rock Paper Scissors</div>
-    <div class="scores">
-        <div class="human-score"></div>
-        <div class="computer-score"></div>
-    </div>
+    <div class="container">
+        <div class="title">Rock Paper Scissors</div>
 
-    <div class="choices">
-        <div class="human-choice">
-            <div class="human">Your Choice:</div>
+        <div class="choices">
+            <div class="human-choice">
+                <div class="human-score">You: </div>
+            </div>
+            <div class="vs">
+                <div>vs</div>
+            </div>
+            <div class="computer-choice">
+                <div class="computer-score">Computer: </div>
+            </div>
         </div>
-        <div>vs</div>
-        <div class="computer-choice">
-            <div class="computer">Computer's Choice:</div>
-        </div>
-    </div>
 
-    <div class="options">
-        <div class="options-text">Choose your weapon</div>
-        <div class="buttons">
-            <div class="rock">
-                <img src="" alt="closed fist">
-            </div>
-            <div class="paper">
-                <img src="" alt="open hand">
-            </div>
-            <div class="scissors">
-                <img src="" alt="peace sign">
+        <div class="options">
+            <div class="options-text">Choose your fighter</div>
+            <div class="buttons">
+                <div class="rock">
+                    <img src="icons/draw.png" alt="drawing of a rock">
+                </div>
+                <div class="paper">
+                    <img src="icons/drawing.png" alt="drawing on paper">
+                </div>
+                <div class="scissors">
+                    <img src="icons/scissor-tool.png" alt="scissors drawing">
+                </div>
             </div>
         </div>
     </div>

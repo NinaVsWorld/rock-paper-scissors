@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: goldenrod;
+    font-family: "Patrick Hand", cursive;
+}
+
+.container {
+    width: 80%;
+    background-color: #EEF2F7;
+    border-radius: 15px;
+    border: black 5px solid;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+}
