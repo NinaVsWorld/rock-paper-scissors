@@ -1,10 +1,3 @@
-// Link start button to game page
-/*
-const startButton = document.querySelector(".start-button");
-startButton.addEventListener("click", () => {
-window.location.replace("index.html");
-}); */
-
 let humanScore = 0;
 let computerScore = 0;
 let yourChoice;
@@ -14,10 +7,22 @@ const displayHumanChoice = document.querySelector(".human-choice");
 const displayComputerChoice = document.querySelector(".computer-choice");
 const img = document.createElement("img");
 
-function on() {
-    const endOverlay = document.querySelector("#end-overlay");
+function startOn() {
+    const startOverlay = document.querySelector(".start-overlay");
+    startOverlay.style.display = "flex";
+    startOverlay.style.justifyContent = "center";
+}
+
+const startGame = document.querySelector(".start-button");
+startGame.addEventListener("click", () => {
+    document.querySelector(".start-overlay").style.display = "none";
+})
+
+function endOn() {
+    const endOverlay = document.querySelector(".end-overlay");
     endOverlay.style.display = "flex";
     endOverlay.style.justifyContent = "center";
+    endOverlay.style.alignItems = "center";
 
     const winnerMessage = () => {
         if (humanScore > computerScore) {
@@ -53,7 +58,7 @@ rockButton.addEventListener("click", async () => {
 
     if (humanScore === 5 || computerScore === 5) {
         console.log("end game");
-        on();
+        endOn();
     }
 })
 
@@ -69,7 +74,7 @@ paperButton.addEventListener("click", async () => {
 
     if (humanScore === 5 || computerScore === 5) {
         console.log("end game");
-        on();
+        endOn();
     }
 })
 
@@ -85,7 +90,7 @@ scissorsButton.addEventListener("click", async () => {
 
     if (humanScore === 5 || computerScore === 5) {
         console.log("end game");
-        on();
+        endOn();
     }
 })
 
