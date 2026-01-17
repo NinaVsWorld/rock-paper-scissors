@@ -12,46 +12,55 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+function computerPondering() {
+    const computerChoice = document.querySelector(".computer-choice");
+    const div = document.createElement("div");
+    div.textContent = "?";
+    div.classList.add("question-mark");
+    computerChoice.replaceChild(div, computerChoice.lastElementChild);
+}
+
 // Prompt user for choice out of rock, paper or scissors and return
 // their choice as a string
 // Add event listener to each button, rock paper or scissors
 // The function should return a string which we can use to determine winners in playRound
-let result;
-let compchoice;
+let yourChoice;
+let compChoice;
 const computerWait = time => new Promise(resolve => setTimeout(resolve, time));
 
-function getHumanChoice() {
+function setPlayersChoices() {
     const parentContainer = document.querySelector(".container");
     const humanChoice = document.querySelector(".human-choice");
     const img = document.createElement("img");
+    const waitTime = 750;
 
     parentContainer.addEventListener("click", async (event) => {
         if (event.target && (event.target.matches(".rock") || event.target.matches(".rock-img"))) {
-            humanChoice.removeChild(humanChoice.lastElementChild);
             img.src = "icons/draw.png";
-            humanChoice.appendChild(img);
-            result = "rock";
-            await computerWait(1000);
-            compchoice = getComputerChoice();
+            humanChoice.replaceChild(img, humanChoice.lastElementChild);
+            yourChoice = "rock";
+            computerPondering();
+            await computerWait(waitTime);
+            compChoice = getComputerChoice();
         } else if (event.target && (event.target.matches(".paper") || event.target.matches(".paper-img"))) {
-            humanChoice.removeChild(humanChoice.lastElementChild);
             img.src = "icons/drawing.png";
-            humanChoice.appendChild(img);
-            result = "paper";
-            await computerWait(1000);
-            compchoice = getComputerChoice();
+            humanChoice.replaceChild(img, humanChoice.lastElementChild);
+            yourChoice = "paper";
+            computerPondering();
+            await computerWait(waitTime);
+            compChoice = getComputerChoice();
         } else if (event.target && (event.target.matches(".scissors") || event.target.matches(".scissors-png"))) {
-            humanChoice.removeChild(humanChoice.lastElementChild);
             img.src = "icons/scissor-tool.png";
-            humanChoice.appendChild(img);
-            result = "scissors";
-            await computerWait(1000);
-            compchoice = getComputerChoice();
+            humanChoice.replaceChild(img, humanChoice.lastElementChild);
+            yourChoice = "scissors";
+            computerPondering();
+            await computerWait(waitTime);
+            compChoice = getComputerChoice();
         }
     });
 }
 
-getHumanChoice();
+setPlayersChoices();
 
 // Randomly generates computer choice between rock, paper or scissors
 // Returns the choice as a string
