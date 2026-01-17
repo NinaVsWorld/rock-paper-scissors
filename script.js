@@ -12,6 +12,47 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+// Prompt user for choice out of rock, paper or scissors and return
+// their choice as a string
+// Add event listener to each button, rock paper or scissors
+// The function should return a string which we can use to determine winners in playRound
+let result;
+let compchoice;
+const computerWait = time => new Promise(resolve => setTimeout(resolve, time));
+
+function getHumanChoice() {
+    const parentContainer = document.querySelector(".container");
+    const humanChoice = document.querySelector(".human-choice");
+    const img = document.createElement("img");
+
+    parentContainer.addEventListener("click", async (event) => {
+        if (event.target && (event.target.matches(".rock") || event.target.matches(".rock-img"))) {
+            humanChoice.removeChild(humanChoice.lastElementChild);
+            img.src = "icons/draw.png";
+            humanChoice.appendChild(img);
+            result = "rock";
+            await computerWait(1000);
+            compchoice = getComputerChoice();
+        } else if (event.target && (event.target.matches(".paper") || event.target.matches(".paper-img"))) {
+            humanChoice.removeChild(humanChoice.lastElementChild);
+            img.src = "icons/drawing.png";
+            humanChoice.appendChild(img);
+            result = "paper";
+            await computerWait(1000);
+            compchoice = getComputerChoice();
+        } else if (event.target && (event.target.matches(".scissors") || event.target.matches(".scissors-png"))) {
+            humanChoice.removeChild(humanChoice.lastElementChild);
+            img.src = "icons/scissor-tool.png";
+            humanChoice.appendChild(img);
+            result = "scissors";
+            await computerWait(1000);
+            compchoice = getComputerChoice();
+        }
+    });
+}
+
+getHumanChoice();
+
 // Randomly generates computer choice between rock, paper or scissors
 // Returns the choice as a string
 function getComputerChoice() {
@@ -36,39 +77,6 @@ function getComputerChoice() {
     }
     return choice;
 }
-
-getComputerChoice();
-
-// Prompt user for choice out of rock, paper or scissors and return
-// their choice as a string
-// Add event listener to each button, rock paper or scissors
-// The function should return a string which we can use to determine winners in playRound
-const getHumanChoice = function() {
-    const parentContainer = document.querySelector(".container");
-    const humanChoice = document.querySelector(".human-choice");
-    const img = document.createElement("img");
-
-    parentContainer.addEventListener("click", (event) => {
-        if (event.target && (event.target.matches(".rock") || event.target.matches(".rock-img"))) {
-            humanChoice.removeChild(humanChoice.lastElementChild);
-            img.src = "icons/draw.png";
-            humanChoice.appendChild(img);
-            return "rock";
-        } else if (event.target && (event.target.matches(".paper") || event.target.matches(".paper-img"))) {
-            humanChoice.removeChild(humanChoice.lastElementChild);
-            img.src = "icons/drawing.png";
-            humanChoice.appendChild(img);
-            return "paper";
-        } else if (event.target && (event.target.matches(".scissors") || event.target.matches(".scissors-png"))) {
-            humanChoice.removeChild(humanChoice.lastElementChild);
-            img.src = "icons/scissor-tool.png";
-            humanChoice.appendChild(img);
-            return "scissors";
-        }
-    });
-}
-
-getHumanChoice();
 
 function playRound(humanChoice, computerChoice) {
    if (humanChoice === computerChoice) {
