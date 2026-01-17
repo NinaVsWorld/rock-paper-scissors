@@ -1,11 +1,38 @@
 // Link start button to game page
-/*const startButton = document.querySelector(".start-button");
+/*
+const startButton = document.querySelector(".start-button");
 startButton.addEventListener("click", () => {
-    window.location.replace("index.html");
-});*/
+window.location.replace("index.html");
+}); */
 
 let humanScore = 0;
 let computerScore = 0;
+let yourChoice;
+let compChoice;
+const computerWait = time => new Promise(resolve => setTimeout(resolve, time));
+const displayHumanChoice = document.querySelector(".human-choice");
+const displayComputerChoice = document.querySelector(".computer-choice");
+const img = document.createElement("img");
+
+function on() {
+    const endOverlay = document.querySelector("#end-overlay");
+    endOverlay.style.display = "flex";
+    endOverlay.style.justifyContent = "center";
+
+    const winnerMessage = () => {
+        if (humanScore > computerScore) {
+            return "You won Rock Paper Scissors!";
+        } else {
+            return "Computer won Rock Paper Scissors! Better luck next time.";
+        }
+    }
+    document.querySelector(".winner").textContent = winnerMessage();
+}
+
+const reloadGame = document.querySelector(".end-button");
+reloadGame.addEventListener("click", () => {
+    location.reload();
+})
 
 function computerPondering() {
     const div = document.createElement("div");
@@ -13,13 +40,6 @@ function computerPondering() {
     div.classList.add("question-mark");
     displayComputerChoice.replaceChild(div, displayComputerChoice.lastElementChild);
 }
-
-let yourChoice;
-let compChoice;
-const computerWait = time => new Promise(resolve => setTimeout(resolve, time));
-const displayHumanChoice = document.querySelector(".human-choice");
-const displayComputerChoice = document.querySelector(".computer-choice");
-const img = document.createElement("img");
 
 const rockButton = document.querySelector(".rock");
 rockButton.addEventListener("click", async () => {
@@ -30,6 +50,11 @@ rockButton.addEventListener("click", async () => {
     await computerWait(750);
     compChoice = getComputerChoice();
     playRound(yourChoice, compChoice);
+
+    if (humanScore === 5 || computerScore === 5) {
+        console.log("end game");
+        on();
+    }
 })
 
 const paperButton = document.querySelector(".paper");
@@ -41,6 +66,11 @@ paperButton.addEventListener("click", async () => {
     await computerWait(750);
     compChoice = getComputerChoice();
     playRound(yourChoice, compChoice);
+
+    if (humanScore === 5 || computerScore === 5) {
+        console.log("end game");
+        on();
+    }
 })
 
 const scissorsButton = document.querySelector(".scissors");
@@ -52,6 +82,11 @@ scissorsButton.addEventListener("click", async () => {
     await computerWait(750);
     compChoice = getComputerChoice();
     playRound(yourChoice, compChoice);
+
+    if (humanScore === 5 || computerScore === 5) {
+        console.log("end game");
+        on();
+    }
 })
 
 // Randomly generates computer choice between rock, paper or scissors
