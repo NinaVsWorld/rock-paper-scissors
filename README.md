@@ -4,7 +4,7 @@ The Odin Project's Foundation course. The user plays the game against the comput
 
 Play the game here: https://ninavsworld.github.io/rock-paper-scissors/
 
-add image here
+![Image of game page](rps-ui.png)
 
 ## How It's Made
 **Tech used:** HTML, CSS, Javascript
