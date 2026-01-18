@@ -2,7 +2,7 @@
 This is an interactive version of Rock Paper Scissors that I made while going through
 The Odin Project's Foundation course. The user plays the game against the computer.
 
-Link to live preview: 
+Play the game here: https://ninavsworld.github.io/rock-paper-scissors/
 
 add image here
 
